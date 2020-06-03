@@ -16,3 +16,6 @@ The notebooks are ready to run in [colab](https://colab.research.google.com)
 
 Two python notebooks are available: (1) with 12 features and (2) with 17 features. Both use XGboost algorithm.
 
+Two python codes are available: (1) with 17 features and (2) the same code but with GPU support. Both implemet the XGboost algorithm.
+
+
