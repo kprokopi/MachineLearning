@@ -14,19 +14,19 @@ In 2017 Instacart organised a Kaggle competition and provided to the community a
 
 The notebooks can be run in [colab](https://colab.research.google.com) 
 
-All codes use XGboost algorithm.
+All codes use XGboost algorithm(https://xgboost.readthedocs.io/en/latest/#).
 
 Python notebooks available:
-* (1) with 12 features,
-* (2) with 17 features
-* (3) with 18 features (experimental)
+1. with 12 features,
+2. with 17 features
+3. with 18 features (experimental)
 
 
 Python codes available:
-* (1) with 17 features,
-* (2) with 17 features with GPU support
-* (3) with 17 with GridSearchCV
-* (4) with 18 features (experimental)
+1. with 17 features,
+2. with 17 features with GPU support
+3. with 17 with GridSearchCV
+4. with 18 features (experimental)
 
 The code **fetch_csv.py** fetch the csv files from kaggle and the code **submit_csv.py** submit the csv file to kaggle.
 
