@@ -82,24 +82,7 @@ aisles = pd.read_csv('../input/aisles.csv')
 departments = pd.read_csv('../input/departments.csv')
 
 
-'''
-#csv files are local in windows system
-import os #package to get the working directory
-cwd = os.getcwd()
-path_orders=cwd+'\\input\\orders.csv'
-path_products_train=cwd+'\\input\\order_products__train.csv'
-path_products_prior=cwd+'\\input\\order_products__prior.csv'
-path_products=cwd+'\\input\\products.csv'
-path_aisles=cwd+'\\input\\aisles.csv'
-path_departments=cwd+'\\input\\departments.csv'
 
-orders = pd.read_csv(path_orders)
-order_products_train = pd.read_csv(path_products_train)
-order_products_prior = pd.read_csv(path_products_prior)
-products = pd.read_csv(path_products)
-aisles = pd.read_csv(path_aisles)
-departments = pd.read_csv(path_departments)
-'''
 
 
 # This step results in the following DataFrames:
@@ -1103,9 +1086,7 @@ gc.collect()
 
 # In[ ]:
 
-#We count the run time for the XGboos algorithm
-import time
-start_time=time.time()
+
 
 # TRAIN FULL
 ###########################
@@ -1122,9 +1103,9 @@ X_train, y_train = data_train.drop('reordered', axis=1), data_train.reordered
 ## SET BOOSTER'S PARAMETERS
 ########################################
 parameters = {'eval_metric':'logloss',
-              'max_depth':'5',
+              'max_depth':'10',
               'colsample_bytree':'0.4',
-              'subsample':'0.75'
+              'subsample':'0.8'
              }
 
 ########################################
@@ -1138,10 +1119,6 @@ xgbc = xgb.XGBClassifier(objective='binary:logistic', parameters=parameters, num
 ## TRAIN MODEL
 ########################################
 model = xgbc.fit(X_train, y_train)
-
-#Print time elapsed
-print("Execution time: %.2f minutes"%(1.0*(time.time()-start_time)/60.0))
-
 
 ##################################
 # FEATURE IMPORTANCE - GRAPHICAL

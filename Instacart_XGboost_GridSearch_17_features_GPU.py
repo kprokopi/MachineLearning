@@ -73,16 +73,17 @@ gc.enable()                       # Activate
 # ## 1.2 Load data from the CSV files
 # Instacart provides 6 CSV files, which we have to load into Python. Towards this end, we use the .read_csv() function, which is included in the Pandas package. Reading in data with the .read_csv( ) function returns a DataFrame.
 
-'''
+
 orders = pd.read_csv('../input/orders.csv')
 order_products_train = pd.read_csv('../input/order_products__train.csv')
 order_products_prior = pd.read_csv('../input/order_products__prior.csv')
 products = pd.read_csv('../input/products.csv')
 aisles = pd.read_csv('../input/aisles.csv')
 departments = pd.read_csv('../input/departments.csv')
+
+
 '''
-
-
+#csv files are local in windows system
 import os #package to get the working directory
 cwd = os.getcwd()
 path_orders=cwd+'\\input\\orders.csv'
@@ -98,7 +99,7 @@ order_products_prior = pd.read_csv(path_products_prior)
 products = pd.read_csv(path_products)
 aisles = pd.read_csv(path_aisles)
 departments = pd.read_csv(path_departments)
-
+'''
 
 
 # This step results in the following DataFrames:
@@ -117,7 +118,7 @@ departments = pd.read_csv(path_departments)
 
 #### Remove triple quotes to trim your dataset and experiment with your data
 ### COMMANDS FOR CODING TESTING - Get 10% of users
-orders = orders.loc[orders.user_id.isin(orders.user_id.drop_duplicates().sample(frac=0.1, random_state=25))]
+#orders = orders.loc[orders.user_id.isin(orders.user_id.drop_duplicates().sample(frac=0.1, random_state=25))]
 
 
 # We now use the .head( ) method in order to visualise the first 10 rows of these tables. Click the Output button below to see the tables.
@@ -1102,8 +1103,11 @@ gc.collect()
 
 # In[ ]:
 
+#We count the run time for the XGboos algorithm
+import time
+start_time=time.time()
 
-
+'''
 # TRAIN FULL
 ###########################
 ## IMPORT REQUIRED PACKAGES
@@ -1119,22 +1123,26 @@ X_train, y_train = data_train.drop('reordered', axis=1), data_train.reordered
 ## SET BOOSTER'S PARAMETERS
 ########################################
 parameters = {'eval_metric':'logloss',
-              'max_depth':'10',
+              'max_depth':'5',
               'colsample_bytree':'0.4',
-              'subsample':'0.8'
+              'subsample':'0.75'
              }
 
 ########################################
 ## INSTANTIATE XGBClassifier()
 ########################################
 #no GPU
-xgbc = xgb.XGBClassifier(objective='binary:logistic', parameters=parameters, num_boost_round=10)
+#xgbc = xgb.XGBClassifier(objective='binary:logistic', parameters=parameters, num_boost_round=10)
 #with GPU
-#xgbc = xgb.XGBClassifier(objective='binary:logistic', parameters=parameters, num_boost_round=10, gpu_id=0, tree_method = 'gpu_hist')
+xgbc = xgb.XGBClassifier(objective='binary:logistic', parameters=parameters, num_boost_round=10, gpu_id=0, tree_method = 'gpu_hist')
 ########################################
 ## TRAIN MODEL
 ########################################
 model = xgbc.fit(X_train, y_train)
+
+#Print time elapsed
+print("Execution time: %.2f minutes"%(1.0*(time.time()-start_time)/60.0))
+
 
 ##################################
 # FEATURE IMPORTANCE - GRAPHICAL
@@ -1151,7 +1159,7 @@ model = xgbc.fit(X_train, y_train)
 # Plot the tree of the model
 
 # In[ ]:
-
+'''
 '''
 from matplotlib import pyplot
 from xgboost import plot_tree
@@ -1174,7 +1182,7 @@ pyplot.show()
 
 # In[ ]:
 
-'''
+
 ###########################
 ## DISABLE WARNINGS
 ###########################
@@ -1247,11 +1255,13 @@ del [X_train, y_train]
 
 model.get_params()
 
+#Print time elapsed
+print("Execution time: %.2f minutes"%(1.0*(time.time()-start_time)/60.0))
 
 # Alternatively, we can use the hyperparameters of the GridSearchCV to train the model using the full set of data below:
 
 # In[ ]:
-'''
+
 
 '''
 # TRAIN FULL
