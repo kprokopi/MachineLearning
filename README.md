@@ -14,7 +14,7 @@ In 2017 Instacart organised a Kaggle competition and provided to the community a
 
 The notebooks can be run in [colab](https://colab.research.google.com) 
 
-All codes use XGboost algorithm(https://xgboost.readthedocs.io/en/latest/#).
+All codes use [XGboost algorithm](https://xgboost.readthedocs.io/en/latest/#).
 
 Python notebooks available:
 1. with 12 features,
