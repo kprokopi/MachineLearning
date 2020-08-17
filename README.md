@@ -1,10 +1,6 @@
 # Machine Learning
 (Machine Learning in Python)
 
-Project for the course "Special Topics in Information Systems II" of Department of Business Administration - [University of Macedonia](http://www.uom.gr)
-
-by *Konstantinos Prokopidis* and *Iordanis Tassopoulos* 
-
 ### Instacart Market Basket Analysis
 https://www.kaggle.com/c/instacart-market-basket-analysis
 
