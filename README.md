@@ -8,7 +8,7 @@ Instacart is an American company that operates as a same-day grocery delivery se
 
 In 2017 Instacart organised a Kaggle competition and provided to the community a sample dataset of over 3 million grocery orders from more than 200,000 Instacart users. The orders include 32 million basket items and 50,000 unique products. The objective of the competition was participants to predict which previously purchased products will be in a user’s next order.
 
-The notebooks can be run in [colab](https://colab.research.google.com) 
+The notebooks can be run in [colab](https://colab.research.google.com). 
 
 All codes use [XGboost algorithm](https://xgboost.readthedocs.io/en/latest/#).
 
@@ -16,7 +16,6 @@ Python notebooks available:
 1. with 12 features
 2. with 17 features
 3. with 18 features (experimental)
-
 
 Python codes available:
 1. with 17 features
